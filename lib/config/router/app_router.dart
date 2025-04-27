@@ -2,9 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:teslo_shop/features/auth/auth.dart';
 import 'package:teslo_shop/features/auth/presentation/providers/auth_provider.dart';
-import 'package:teslo_shop/features/estudiantes/estudiantes.dart';
-import 'package:teslo_shop/features/estudiantes/presentation/screens/libreta_screen.dart';
-import 'package:teslo_shop/features/estudiantes/presentation/screens/tipo_nota_screen.dart';
+import 'package:teslo_shop/features/dashboard/presentation/screens/dashboard_screen.dart';
 
 import 'app_router_notifier.dart';
 
@@ -34,25 +32,7 @@ final goRouterProvider = Provider((ref) {
       ///* Product Routes
       GoRoute(
         path: '/',
-        builder: (context, state) => const EstudiantesScreen(),
-      ),
-      GoRoute(
-        path: '/tipo-nota/:estudianteId',
-        name: TipoNotaScreen.name,
-        builder: (context, state) {
-          final estudianteId = state.params['estudianteId'] ?? 'no-id';
-
-          return TipoNotaScreen(estudianteId: estudianteId);
-        },
-      ),
-      GoRoute(
-        path: '/tipo-nota/libreta/:estudianteId',
-        name: LibretaScreen.name,
-        builder: (context, state) {
-          final estudianteId = state.params['estudianteId'] ?? 'no-id';
-
-          return LibretaScreen(estudianteId: estudianteId);
-        },
+        builder: (context, state) => const DashboardScreen(),
       ),
     ],
     redirect: (context, state) {

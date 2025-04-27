@@ -41,7 +41,7 @@ class TipoNotaViewState extends ConsumerState<TipoNotaView> {
                   child: Card(
                     color: colors.primary,
                     elevation: 0.0,
-                    child: const Padding(
+                    child:  Padding(
                       padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

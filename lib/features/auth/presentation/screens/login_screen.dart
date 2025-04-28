@@ -23,14 +23,14 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 80),
             // Icono representativo de un colegio, como un libro o un lápiz
             const Icon(
-              Icons.school, // Cambiado a un ícono de colegio
+              Icons.account_balance, // Ícono relacionado a la contabilidad
               color: Colors.black,
               size: 100,
             ),
             const SizedBox(height: 10),
             const Center(
               child: Text(
-                'THE BETTER SCHOOL',
+                'Sistema Contable',
                 style: TextStyle(color: Colors.black, fontSize: 25, fontStyle: FontStyle.italic, ),
               ),
             ),
@@ -44,7 +44,7 @@ class LoginScreen extends StatelessWidget {
                     const BorderRadius.only(topLeft: Radius.circular(100)),
                 image: DecorationImage(
                   image: const AssetImage(
-                      "assets/images/col.jpeg"), // Fondo escolar
+                      "assets/images/accounting-bg.jpg"), // Fondo escolar
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
                     Colors.black.withOpacity(0.5),

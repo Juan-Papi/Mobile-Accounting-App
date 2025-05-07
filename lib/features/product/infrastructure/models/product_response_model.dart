@@ -31,19 +31,25 @@ class ProductResponse {
 
   factory ProductResponse.fromJson(Map<String, dynamic> json) =>
       ProductResponse(
-        currentPage: json["current_page"],
-        data: List<Product>.from(json["data"].map((x) => Product.fromJson(x))),
-        firstPageUrl: json["first_page_url"],
-        from: json["from"],
-        lastPage: json["last_page"],
-        lastPageUrl: json["last_page_url"],
-        links: List<Link>.from(json["links"].map((x) => Link.fromJson(x))),
+        currentPage: json["current_page"] ?? 0,
+        data: (json["data"] as List<dynamic>?)
+                ?.map((x) => Product.fromJson(x))
+                .toList() ??
+            [],
+        firstPageUrl: json["first_page_url"] ?? '',
+        from: json["from"] ?? 0,
+        lastPage: json["last_page"] ?? 0,
+        lastPageUrl: json["last_page_url"] ?? '',
+        links: (json["links"] as List<dynamic>?)
+                ?.map((x) => Link.fromJson(x))
+                .toList() ??
+            [],
         nextPageUrl: json["next_page_url"],
-        path: json["path"],
-        perPage: json["per_page"],
+        path: json["path"] ?? '',
+        perPage: json["per_page"] ?? 0,
         prevPageUrl: json["prev_page_url"],
-        to: json["to"],
-        total: json["total"],
+        to: json["to"] ?? 0,
+        total: json["total"] ?? 0,
       );
 
   Map<String, dynamic> toJson() => {

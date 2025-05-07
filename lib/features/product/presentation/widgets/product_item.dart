@@ -12,29 +12,32 @@ class ProductItem extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: ListTile(
-        leading: product.imgUrl != null
-            ? Image.network(
-                '${ApiConstants.baseUrl}/storage/${product.imgUrl}',
-                width: 50,
-                height: 50,
-                fit: BoxFit.cover,
-              )
-            : const Icon(Icons.image),
-        title: Text(product.name),
-        subtitle: Text('\$${product.price} - Stock: ${product.stock}'),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IconButton(
-              icon: const Icon(Icons.edit),
-              onPressed: () => _navigateToEditProduct(context),
-            ),
-            IconButton(
-              icon: const Icon(Icons.delete),
-              onPressed: () => _confirmDelete(context),
-            ),
-          ],
+      leading: product.imgUrl != null
+        ? Image.network(
+          '${ApiConstants.baseUrl}/storage/${product.imgUrl}',
+          width: 50,
+          height: 50,
+          fit: BoxFit.cover,
+          )
+        : const Icon(Icons.image),
+      title: Text(
+        product.name,
+        style: const TextStyle(fontSize: 18),
+      ),
+      subtitle: Text('\$${product.price} - Stock: ${product.stock}'),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+        IconButton(
+          icon: const Icon(Icons.edit),
+          onPressed: () => _navigateToEditProduct(context),
         ),
+        IconButton(
+          icon: const Icon(Icons.delete),
+          onPressed: () => _confirmDelete(context),
+        ),
+        ],
+      ),
       ),
     );
   }

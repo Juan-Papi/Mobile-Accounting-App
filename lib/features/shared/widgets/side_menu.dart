@@ -42,19 +42,27 @@ class SideMenuState extends ConsumerState<SideMenu> {
         children: [
           Padding(
             padding: EdgeInsets.fromLTRB(20, hasNotch ? 0 : 20, 16, 0),
-            child: Text('Saludos', style: textStyles.titleMedium),
+            child: Text('Saludos',
+              style: textStyles.titleSmall?.copyWith(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              )),
           ),
 
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 16, 0),
-            child:
-                Text('Usuario: ${authState.user!.name}', style: textStyles.titleSmall),
+            child: Text(
+              'Usuario: ${authState.user!.name}',
+              style: textStyles.titleSmall?.copyWith(fontSize: 16),
+            ),
           ),
 
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 16, 10),
-            child:
-                Text('${authState.user!.email}', style: textStyles.titleSmall),
+            child: Text(
+              authState.user!.email,
+              style: textStyles.titleSmall?.copyWith(fontSize: 16),
+            ),
           ),
           // const NavigationDrawerDestination(
           //     icon: Icon( Icons.home_outlined ),

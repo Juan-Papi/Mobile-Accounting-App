@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:teslo_shop/features/product/presentation/providers/product_provider.dart';
 import 'package:teslo_shop/features/product/presentation/widgets/product_item.dart';
+import 'package:teslo_shop/features/shared/widgets/side_menu.dart';
 
 class ProductScreen extends ConsumerStatefulWidget {
   const ProductScreen({super.key});
@@ -36,9 +37,11 @@ class _ProductScreenState extends ConsumerState<ProductScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final scaffoldKey = GlobalKey<ScaffoldState>();
     final productState = ref.watch(productsNotifierProvider);
 
     return Scaffold(
+      drawer: SideMenu(scaffoldKey: scaffoldKey),
       appBar: AppBar(
         title: const Text('Productos'),
         actions: [
@@ -56,11 +59,13 @@ class _ProductScreenState extends ConsumerState<ProductScreen> {
               controller: _searchController,
               decoration: InputDecoration(
                 hintText: 'Buscar productos...',
+                hintStyle: const TextStyle(fontSize: 14.0), // Reduce font size
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.search),
                   onPressed: () => _applySearch(),
                 ),
               ),
+              style: const TextStyle(fontSize: 14.0), // Reduce input text size
               onSubmitted: (_) => _applySearch(),
             ),
           ),

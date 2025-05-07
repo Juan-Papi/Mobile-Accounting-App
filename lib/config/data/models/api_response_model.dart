@@ -1,4 +1,4 @@
-import 'package:teslo_shop/core/data/models/errors_model.dart';
+import 'package:teslo_shop/config/data/models/errors_model.dart';
 
 class ApiResponse {
   final bool success;

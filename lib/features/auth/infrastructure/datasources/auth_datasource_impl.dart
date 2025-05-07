@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:teslo_shop/config/config.dart';
-import 'package:teslo_shop/core/data/models/api_response_model.dart';
+import 'package:teslo_shop/config/data/models/api_response_model.dart';
 import 'package:teslo_shop/features/auth/domain/domain.dart';
 import 'package:teslo_shop/features/auth/infrastructure/infrastructure.dart';
 

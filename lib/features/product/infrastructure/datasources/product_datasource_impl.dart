@@ -2,7 +2,9 @@ import 'package:teslo_shop/config/constants/app_api_constants.dart';
 import 'package:teslo_shop/config/network/api_client.dart';
 import 'package:teslo_shop/config/network/api_client_impl.dart';
 import 'package:teslo_shop/features/product/domain/datasources/product_datasource.dart';
+import 'package:teslo_shop/features/product/infrastructure/models/category_response.dart';
 import 'package:teslo_shop/features/product/infrastructure/models/product_response_model.dart';
+import 'package:teslo_shop/features/product/infrastructure/models/provider_response.dart';
 
 class ProductDataSourceImpl implements ProductDataSource {
   final ApiClient apiClient = ApiClientImpl();
@@ -74,5 +76,23 @@ class ProductDataSourceImpl implements ProductDataSource {
     await apiClient.delete(
       '${ApiConstants.listProductsEndpoint}/$id',
     );
+  }
+
+  @override
+  Future<List<Category>> getCategories() async {
+    final response = await apiClient.get(
+      ApiConstants.listCategoriesEndpoint,
+    );
+    final categoryResponse = CategoryResponse.fromJson(response);
+    return categoryResponse.categories;
+  }
+
+  @override
+  Future<List<Provider>> getProviders() async {
+    final response = await apiClient.get(
+      ApiConstants.listProvidersEndpoint,
+    );
+    final providerResponse = ProviderResponse.fromJson(response);
+    return providerResponse.providers;
   }
 }

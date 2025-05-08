@@ -1,7 +1,9 @@
 import 'package:teslo_shop/features/product/domain/datasources/product_datasource.dart';
 import 'package:teslo_shop/features/product/domain/repositories/product_repository.dart';
 import 'package:teslo_shop/features/product/infrastructure/datasources/product_datasource_impl.dart';
+import 'package:teslo_shop/features/product/infrastructure/models/category_response.dart';
 import 'package:teslo_shop/features/product/infrastructure/models/product_response_model.dart';
+import 'package:teslo_shop/features/product/infrastructure/models/provider_response.dart';
 
 class ProductRepositoryImpl implements ProductRepository {
   final ProductDataSource dataSource;
@@ -57,5 +59,15 @@ class ProductRepositoryImpl implements ProductRepository {
   Future<Product> updateProduct(int id, Product product) {
     // TODO: implement updateProduct
     throw UnimplementedError();
+  }
+
+  @override
+  Future<List<Category>> getCategories() {
+    return dataSource.getCategories();
+  }
+
+  @override
+  Future<List<Provider>> getProviders() {
+    return dataSource.getProviders();
   }
 }

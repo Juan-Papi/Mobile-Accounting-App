@@ -80,6 +80,7 @@ class Product {
   final DateTime createdAt;
   final DateTime updatedAt;
   final int categoryId;
+  final String? purchasePrice;
 
   Product({
     required this.id,
@@ -92,6 +93,7 @@ class Product {
     required this.createdAt,
     required this.updatedAt,
     required this.categoryId,
+    this.purchasePrice,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
@@ -105,6 +107,7 @@ class Product {
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
         categoryId: json["category_id"],
+        purchasePrice: json["purchase_price"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -118,7 +121,15 @@ class Product {
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
         "category_id": categoryId,
+        if (purchasePrice != null) "purchase_price": purchasePrice,
       };
+
+  // Helper para obtener el precio como double
+  double get priceAsDouble => double.tryParse(price) ?? 0.0;
+
+  // Helper para obtener el precio de compra como double
+  double get purchasePriceAsDouble =>
+      double.tryParse(purchasePrice ?? '0') ?? 0.0;
 }
 
 class Link {
